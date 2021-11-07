@@ -1,0 +1,61 @@
+<h1>New Contact</h1>
+
+<%= form_with model: @contact, local: true do |f| %>
+
+  <div class="field form-group">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, 
+      autofocus: true,
+      autocpomplete: "name",
+      placeholder: "タイトル",
+      required: "",
+      class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, 
+      autofocus: true,
+      autocpomplete: "E-mail",
+      required: "",
+      class:"form-control" %>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :subject, "件名" %>
+    <%= f.text_field :subject, 
+      autofocus: true,
+      autocpomplete: "Subject",
+      required: "",
+      class:"form-control" %>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :phone_numb, "電話番号" %>
+    <%= f.telephone_field :phone_numb, 
+      autofocus: true,
+      autocpomplete: "Phone Number",
+      required: "",
+      class:"form-control" %>
+  </div>
+
+
+  <div class="field form-group">
+    <%= f.label :message, "お問い合わせ内容" %>
+    <%= f.text_area :message,
+      autofocus: true,
+      autocpomplete: "message",
+      required: "",
+      rows: "5",
+      class:"form-control" %>
+  </div>
+  
+  <div class="field form-group">
+    <%= f.label :answer_to_return, '折返し方法' %>
+    <%= f.select :answer_to_return, @answer.keys.map {|k| [k, k]}, {prompt:"選択してください"}, { class: 'form-control', required: "" } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "送信", class: "btn btn-primary" %>
+  </div>
+<% end %>
